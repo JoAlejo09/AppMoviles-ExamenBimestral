@@ -127,7 +127,7 @@ Incluye políticas RLS ajustadas para cada rol:
 
 ---
 
-# 🌄 Capturas del Proyecto (Opcional)
+# 🌄 Capturas del Proyecto
 Agrega imágenes aquí:
 - Login:
 
