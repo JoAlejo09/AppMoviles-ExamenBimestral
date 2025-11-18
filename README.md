@@ -129,7 +129,21 @@ Incluye políticas RLS ajustadas para cada rol:
 
 # 🌄 Capturas del Proyecto (Opcional)
 Agrega imágenes aquí:
+- Login:
 
+ <img width="1314" height="309" alt="image" src="https://github.com/user-attachments/assets/ac3e1d53-9acc-4a94-8a01-6751c1237a1d" />
+ 
+ - Usuario
+
+  <img width="1316" height="290" alt="image" src="https://github.com/user-attachments/assets/c269610f-6868-4ea4-b7f8-b63bc86fe414" />
+
+ - Invitado
+
+  <img width="1306" height="300" alt="image" src="https://github.com/user-attachments/assets/035d0160-f9fd-4bab-a7f1-81255ff614c2" />
+
+ - Asesor
+
+   <img width="1314" height="303" alt="image" src="https://github.com/user-attachments/assets/82a6b232-3e37-4fad-9f77-23733c400afc" />
 
 ---
 
