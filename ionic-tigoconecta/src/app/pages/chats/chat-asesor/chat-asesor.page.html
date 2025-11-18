@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/asesor/contratos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat con Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-spinner *ngIf="cargando"></ion-spinner>
+
+  <div *ngIf="!cargando">
+    <div *ngFor="let m of mensajes" style="margin-bottom: 4px;">
+      <ion-chip [color]="esMio(m) ? 'primary' : 'medium'">
+        <ion-label>{{ m.mensaje }}</ion-label>
+      </ion-chip>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+      <ion-item>
+        <ion-input placeholder="Escribe un mensaje..." formControlName="mensaje"></ion-input>
+        <ion-button type="submit" [disabled]="form.invalid">Enviar</ion-button>
+      </ion-item>
+    </form>
+  </ion-toolbar>
+</ion-footer>

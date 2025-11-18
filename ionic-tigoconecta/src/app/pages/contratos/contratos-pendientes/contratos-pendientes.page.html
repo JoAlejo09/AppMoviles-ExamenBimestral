@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/asesor/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Contratos Pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-spinner *ngIf="cargando"></ion-spinner>
+
+  <ion-list *ngIf="!cargando">
+    <ion-item *ngFor="let c of contratos">
+      <ion-label>
+        <h2>Contrato #{{ c.id }}</h2>
+        <p>Usuario: {{ c.usuario_id }}</p>
+        <p>Plan: {{ c.plan_id }}</p>
+        <p>Fecha: {{ c.created_at | date:'short' }}</p>
+      </ion-label>
+      <ion-button slot="end" (click)="abrirChat(c)">Chat</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

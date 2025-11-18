@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Catálogo de Planes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-spinner *ngIf="cargando"></ion-spinner>
+
+  <ion-list *ngIf="!cargando">
+    <ion-card *ngFor="let plan of planes">
+      <img *ngIf="plan.imagen_url" [src]="plan.imagen_url">
+
+      <ion-card-header>
+        <ion-card-title>{{ plan.nombre }}</ion-card-title>
+        <ion-card-subtitle>${{ plan.precio }} / mes</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ plan.descripcion }}</p>
+
+        <ion-button expand="block" (click)="irDetalle(plan.id)">
+          Ver detalles
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

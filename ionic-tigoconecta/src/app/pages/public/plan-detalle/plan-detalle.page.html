@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{ plan?.nombre || 'Detalle del Plan' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="plan">
+
+  <ion-card>
+
+    <!-- Imagen del Storage -->
+    <img [src]="plan.imagen_url"
+         alt="Imagen del plan"
+         *ngIf="plan.imagen_url; else sinImagen" />
+
+    <!-- Fallback -->
+    <ng-template #sinImagen>
+      <img src="assets/no-image.png" alt="Sin imagen" />
+    </ng-template>
+
+    <ion-card-header>
+      <ion-card-title>{{ plan.nombre }}</ion-card-title>
+      <ion-card-subtitle>Precio: ${{ plan.precio }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Segmento:</strong> {{ plan.segmento }}</p>
+      <p><strong>Descripción:</strong> {{ plan.descripcion }}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+  <!-- BOTÓN PARA USUARIO REGISTRADO -->
+  <ion-button
+    expand="block"
+    color="primary"
+    *ngIf="esUsuario()"
+    (click)="contratar()">
+    Contratar este Plan
+  </ion-button>
+
+  <!-- BOTÓN PARA INVITADO -->
+  <ion-button
+    expand="block"
+    color="secondary"
+    *ngIf="esInvitado()"
+    (click)="irLogin()">
+    Iniciar Sesión para Contratar
+  </ion-button>
+
+</ion-content>

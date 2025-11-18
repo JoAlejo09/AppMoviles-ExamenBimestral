@@ -1,0 +1,72 @@
+<ion-header> 
+  <ion-toolbar color="primary">
+    <ion-title>Tigo Conecta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- LOADING mientras carga el rol -->
+  <ng-container *ngIf="!rolCargado">
+    <ion-spinner></ion-spinner>
+  </ng-container>
+
+  <!-- CONTENIDO REAL -->
+  <ng-container *ngIf="rolCargado">
+
+    <!-- Invitado -->
+    <ng-container *ngIf="esInvitado()">
+      <ion-button expand="block" color="primary" (click)="ir('/catalogo')">
+        Ver Catálogo de Planes
+      </ion-button>
+
+      <ion-button expand="block" color="secondary" (click)="ir('/login')">
+        Iniciar Sesión
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" (click)="ir('/register')">
+        Registrarse
+      </ion-button>
+    </ng-container>
+
+    <!-- Usuario registrado -->
+    <ng-container *ngIf="esUsuario()">
+      <ion-button expand="block" color="primary" (click)="ir('/catalogo')">
+        Catálogo de Planes
+      </ion-button>
+
+      <ion-button expand="block" (click)="ir('/mis-contratos')">
+        Mis Contrataciones
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" (click)="ir('/perfil-usuario')">
+        Mi Perfil
+      </ion-button>
+
+      <ion-button expand="block" color="danger" (click)="logout()">
+        Cerrar Sesión
+      </ion-button>
+    </ng-container>
+
+    <!-- Asesor comercial -->
+    <ng-container *ngIf="esAsesor()">
+      <ion-button expand="block" color="primary" (click)="ir('/asesor/dashboard')">
+        Dashboard de Planes
+      </ion-button>
+
+      <ion-button expand="block" (click)="ir('/asesor/contratos-pendientes')">
+        Contratos Pendientes
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" (click)="ir('/asesor/perfil-asesor')">
+        Perfil Asesor
+      </ion-button>
+
+      <ion-button expand="block" color="danger" (click)="logout()">
+        Cerrar Sesión
+      </ion-button>
+    </ng-container>
+
+  </ng-container>
+
+</ion-content>

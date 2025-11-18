@@ -1,0 +1,7 @@
+{
+  "name": "ionic-tigoconecta",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

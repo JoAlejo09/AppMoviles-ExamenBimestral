@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Dashboard Asesor</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-button expand="block" (click)="crearPlan()">Crear nuevo plan</ion-button>
+  <ion-button expand="block" color="secondary" (click)="irContratosPendientes()">
+    Contratos pendientes
+  </ion-button>
+  <ion-button expand="block" fill="outline" (click)="irPerfil()">
+    Mi perfil
+  </ion-button>
+
+  <ion-spinner *ngIf="cargando"></ion-spinner>
+
+  <ion-list *ngIf="!cargando">
+    <ion-item *ngFor="let p of planes">
+      <ion-label>
+        <h2>{{ p.nombre }}</h2>
+        <p>{{ p.segmento }} - ${{ p.precio }}</p>
+        <p>Activo: {{ p.activo ? 'Sí' : 'No' }}</p>
+      </ion-label>
+      <ion-button size="small" slot="end" (click)="editarPlan(p)">Editar</ion-button>
+      <ion-button size="small" color="danger" slot="end" (click)="eliminarPlan(p)">Borrar</ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
