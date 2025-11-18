@@ -11,17 +11,24 @@ export class RoleGuard implements CanActivate {
   ) {}
 
   async canActivate(route: ActivatedRouteSnapshot) {
-    const user = this.sb.getCurrentUser();
-    if (!user) return false;
 
-    const perfil = await this.sb.obtenerPerfilActual();
-    const rolesPermitidos = route.data['roles'] as string[];
+  const user = this.sb.getCurrentUser();
 
-    if (!rolesPermitidos.includes(perfil.rol)) {
-      this.router.navigate(['/']);
-      return false;
-    }
-
-    return true;
+  if (!user) {
+    this.router.navigate(['/login']);
+    return false;
   }
+
+
+  const perfil = await this.sb.getIdUsuario(user.id);
+
+  const rolesPermitidos = route.data['roles'] as string[];
+
+  if (!rolesPermitidos.includes(perfil.rol)) {
+    this.router.navigate(['/home']);
+    return false;
+  }
+
+  return true;
+}
 }
